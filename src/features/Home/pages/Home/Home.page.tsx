@@ -1,5 +1,6 @@
 // Functions
 // Components
+import { Link } from "react-router";
 import { Button } from "../../../../components/reusable/Button/Button";
 import { MainLayout } from "../../../../layouts/Main/Main.layout";
 import { RECOMMENDATIONS } from "../../constants/recommendations";
@@ -23,9 +24,9 @@ export const HomePage = () => {
       </div>
       <div className="recommendation-section">
         {RECOMMENDATIONS.map((recommendation) => (
-          <a href={`/books/?search=${recommendation}`}>
+          <Link to={`/books/?search=${recommendation}`}>
             <Button className="recommendation-button">{recommendation}</Button>
-          </a>
+          </Link>
         ))}
       </div>
     </MainLayout>
