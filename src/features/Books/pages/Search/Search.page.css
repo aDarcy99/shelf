@@ -42,3 +42,11 @@
   color: var(--gray-6);
   font-size: 0.9rem;
 }
+
+.search-page__list {
+  margin-bottom: 1rem;
+}
+
+.search-page__pagination {
+  margin-left: auto;
+}

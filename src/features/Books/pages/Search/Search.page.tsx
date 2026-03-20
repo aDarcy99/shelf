@@ -14,13 +14,14 @@ import { List } from "../../../../components/reusable/List/List";
 import { BookCard } from "../../components/BookCard/BookCard";
 import { SortBy } from "../../../../components/reusable/SortBy/SortBy";
 import { ToggleButton } from "../../../../components/reusable/ToggleButton/ToggleButton";
+import { Button } from "../../../../components/reusable/Button/Button";
+import { Pagination } from "../../../../components/reusable/Pagination/Pagination";
 import { BookModal } from "../../components/BookDetailsModal/BookDetailsModal";
 // Assets
 import { GridIcon } from "../../../../assets/icons/GridIcon";
 import { RowIcon } from "../../../../assets/icons/RowIcon";
 // Styles
 import "./Search.page.css";
-import { Button } from "../../../../components/reusable/Button/Button";
 
 const SORT_OPTIONS: Array<{ content: ReactNode; id: OpenLibrarySortTypes }> = [
   { content: <>Relevance</>, id: "default" },
@@ -37,23 +38,30 @@ export const SearchPage = () => {
 
   const [displayBy, setDisplayBy] = useState<"grid" | "row">("grid");
 
+  const pageValue = parseInt(searchParams.get("page") || "1", 10);
   const sortByValue = searchParams.get("sort-by") || "default";
   const searchValue = searchParams.get("search");
 
-  const { data: openLibraryBookResults } = useQuery(
+  const {
+    data: openLibrarySearchBookResults,
+    isLoading: isOpenLibrarySearchBookResultsLoading,
+  } = useQuery(
     openLibraryQueries.searchBooks({
       query: searchValue || "",
+      page: pageValue,
       sortBy: sortByValue as OpenLibrarySortTypes,
     }),
   );
 
   const modalBook: OpenLibrarySearchBook | undefined =
-    openLibraryBookResults?.items.find((book) => book.key === modalBookKey);
+    openLibrarySearchBookResults?.items.find(
+      (book) => book.key === modalBookKey,
+    );
 
   const onSortByChange = (key: string) => {
-    setSearchParams((prev) => {
-      prev.set("sort-by", key);
-      return prev;
+    setSearchParams((prevSearchParams) => {
+      prevSearchParams.set("sort-by", key);
+      return prevSearchParams;
     });
   };
 
@@ -68,6 +76,14 @@ export const SearchPage = () => {
       setModalBookKey(newSelectedBook?.key ?? null);
       setIsCardModalOpen(!isCardModalOpen);
     };
+
+  const onPaginationChange = (value: number) => {
+    setSearchParams((prevSearchParams) => {
+      prevSearchParams.set("page", value.toString());
+
+      return prevSearchParams;
+    });
+  };
 
   return (
     <>
@@ -99,10 +115,9 @@ export const SearchPage = () => {
 
         <div className="search-page__header">
           <h2>Search results for "{searchValue}"</h2>
-          <p>{openLibraryBookResults?.totalPages} results</p>
         </div>
         <List className="search-page__list" variant={displayBy}>
-          {openLibraryBookResults?.items.map((openLibrarySearchBook) => (
+          {openLibrarySearchBookResults?.items.map((openLibrarySearchBook) => (
             <Button
               key={openLibrarySearchBook.key}
               variant="unset"
@@ -112,6 +127,14 @@ export const SearchPage = () => {
             </Button>
           ))}
         </List>
+        {!isOpenLibrarySearchBookResultsLoading && (
+          <Pagination
+            className="search-page__pagination"
+            onChange={onPaginationChange}
+            page={pageValue}
+            totalPages={openLibrarySearchBookResults?.totalPages ?? 1}
+          />
+        )}
       </MainLayout>
       {!!modalBook && (
         <BookModal

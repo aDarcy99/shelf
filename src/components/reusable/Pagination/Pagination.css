@@ -1,0 +1,17 @@
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.pagination__input {
+  width: 2rem;
+}
+
+.pagination__button {
+  flex-shrink: 0;
+}
+
+.pagination__total {
+  color: var(--gray--6);
+}

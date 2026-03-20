@@ -15,6 +15,7 @@ const PAGE_SIZE = 20;
 export const openLibraryApi = {
   searchBooks: async (options: {
     query: string;
+    page: number;
     sortBy?: OpenLibrarySortTypes;
   }): Promise<PaginationResponse<OpenLibrarySearchBook>> => {
     const url = new URL(`${OPEN_LIBRARY_BASE_URL}/search.json`);
@@ -27,6 +28,10 @@ export const openLibraryApi = {
 
     if (options.sortBy && options.sortBy !== "default") {
       url.searchParams.append("sort", options.sortBy);
+    }
+
+    if (options.page) {
+      url.searchParams.append("page", options.page.toString());
     }
 
     const response = await fetch(url);
