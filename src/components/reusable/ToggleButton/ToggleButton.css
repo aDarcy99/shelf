@@ -1,0 +1,27 @@
+.toggle-button {
+  cursor: pointer;
+  padding: 0.333rem 1rem;
+
+  border-radius: 8px;
+  border: 1px solid var(--gray-8);
+
+  color: var(--gray-8);
+  background-color: var(--white);
+}
+
+.toggle-button:hover {
+  background-color: var(--gray-1);
+}
+
+.toggle-button--icon-only {
+  padding: 0.333rem;
+}
+
+.toggle-button[aria-pressed="true"] {
+  background-color: var(--gray-8);
+  color: var(--white);
+}
+
+.toggle-button[aria-pressed="true"]:hover {
+  background-color: var(--gray-7);
+}

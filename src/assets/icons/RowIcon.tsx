@@ -1,0 +1,16 @@
+export const RowIcon = () => {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <rect x="1" y="2" width="12" height="2" rx="1" fill="currentColor"></rect>
+      <rect x="1" y="6" width="12" height="2" rx="1" fill="currentColor"></rect>
+      <rect
+        x="1"
+        y="10"
+        width="12"
+        height="2"
+        rx="1"
+        fill="currentColor"
+      ></rect>
+    </svg>
+  );
+};

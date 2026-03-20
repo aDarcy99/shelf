@@ -1,0 +1,22 @@
+.sort-by {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.sort-by__text {
+  color: var(--gray-6);
+  font-size: 0.9rem;
+}
+
+.sort-by__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .sort-by__buttons {
+    flex-direction: column;
+  }
+}

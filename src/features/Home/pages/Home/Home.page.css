@@ -1,0 +1,42 @@
+.hero-section {
+  width: 100%;
+  max-width: 67.5rem;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 10rem;
+}
+
+.hero-section h1 {
+  margin-bottom: 1rem;
+
+  text-align: center;
+  font-family: var(--font-family-serif);
+}
+
+.hero-section h1 span {
+  font-family: inherit;
+  color: var(--indigo-6);
+}
+
+.hero-section p {
+  margin-bottom: 2rem;
+
+  text-align: center;
+  color: var(--gray-6);
+}
+
+.recommendation-section {
+  margin: auto;
+  width: 100%;
+  max-width: 67.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.recommendation-button:hover {
+  background-color: var(--gray-9);
+  color: var(--gray-1);
+}

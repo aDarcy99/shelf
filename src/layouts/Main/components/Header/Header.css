@@ -1,0 +1,26 @@
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--gray-2);
+
+  background-color: var(--gray-0);
+}
+
+.header__inner {
+  display: flex;
+  max-width: 67.5rem;
+  margin: auto;
+  gap: 1rem;
+}
+
+.header__logo {
+  margin-right: auto;
+}
+
+.header__input {
+  width: 100%;
+  max-width: 40rem;
+  margin-right: auto;
+}

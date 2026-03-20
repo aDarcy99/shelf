@@ -1,4 +1,7 @@
 :root {
+  --font-family-sans: "DM Sans", sans-serif;
+  --font-family-serif: "Playfair Display", Georgia, serif;
+
   --white: #ffffff;
   --black: #000000;
 
@@ -151,7 +154,12 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  color: var(--gray-9);
+  color: inherit;
+  font-family: "DM Sans", sans-serif;
+}
+
+*:focus {
+  outline: 1px solid var(--indigo-6);
 }
 
 /* Remove default margin */
@@ -172,6 +180,7 @@ body {
   /* Improve text rendering */
   -webkit-font-smoothing: antialiased;
   background-color: var(--gray-0);
+  scrollbar-gutter: stable;
 }
 
 /* Improve media defaults */

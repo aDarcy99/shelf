@@ -1,0 +1,28 @@
+.text-input__root {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--gray-6);
+
+  background-color: var(--white);
+}
+
+.text-input__root:focus-within {
+  outline: 1px solid var(--indigo-6);
+}
+
+.text-input {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+}
+
+.text-input:focus {
+  outline: none;
+}
+
+.text-input::placeholder {
+  color: var(--gray-4);
+}
